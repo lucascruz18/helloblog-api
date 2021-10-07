@@ -1,0 +1,39 @@
+{
+  "name": "helloblog-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "keywords": [],
+  "author": "Lucas Cruz",
+  "scripts": {
+    "start": "ts-node -r tsconfig-paths/register --files dist/main/server.js",
+    "dev": "ts-node-dev -r tsconfig-paths/register --no-notify src/main/server.ts",
+    "build": "rimraf dist && tsc -p tsconfig-build.json",
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test:verbose": "jest --passWithNoTests --runInBand",
+    "test:unit": "npm test -- --watchAll -c jest-unit-config.js",
+    "test:integration": "npm test -- --watchAll -c jest-integration-config.js",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "fast-glob": "^3.2.7"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "jest": "^27.2.4",
+    "supertest": "^6.1.6",
+    "ts-jest": "^27.0.5",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.3"
+  }
+}
