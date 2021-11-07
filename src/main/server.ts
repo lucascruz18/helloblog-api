@@ -1,6 +1,11 @@
-import env from './config/env';
+import env from './config/env'
+import { PgConnection } from '../infra/db/postgres/typeorm/helpers'
 
-(async () => {
-  const app = (await import('./config/app')).default;
-  app.listen(env.port, () => console.log(`Server running at http://localhost:${env.port}`));
-})();
+import 'reflect-metadata'
+
+PgConnection.getInstance().connect()
+  .then(async () => {
+    const app = await (await import('../main/config/app')).default
+    app.listen(env.port, () => console.log(`Server running at http://localhost:${env.port}`))
+  })
+  .catch(console.error)
