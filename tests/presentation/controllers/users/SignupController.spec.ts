@@ -28,7 +28,7 @@ const makeValidation = (): Validation => {
 }
 
 const makeFakeAccount = (): UserModel => ({
-  id: 'valid_id',
+  id: 1,
   name: 'valid_name',
   email: 'valid_email@mail.com',
   bio: 'any_bio',
@@ -95,7 +95,12 @@ describe('SignUp Controller', () => {
     const { sut } = makeSut()
     const httpResponse = await sut.handle(makeFakeRequest())
     const data = {
-      user: makeFakeAccount(),
+      user: {
+        id: 1,
+        name: 'valid_name',
+        email: 'valid_email@mail.com',
+        bio: 'any_bio',
+      },
     }
     expect(httpResponse).toEqual(ok(data))
   })

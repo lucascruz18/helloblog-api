@@ -11,7 +11,8 @@
       "@/tests/*": ["../tests/*"],
       "@/*": ["*"]
     },
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": ["src", "tests"],
   "exclude": []

@@ -35,8 +35,11 @@ export class SignUpController implements Controller {
         return forbidden(new EmailInUseError())
       }
 
+      delete user.password
+
       return ok({ user })
     } catch (error) {
+      console.log(error)
       return serverError(error)
     }
   }
