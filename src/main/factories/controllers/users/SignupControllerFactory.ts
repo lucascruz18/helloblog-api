@@ -4,6 +4,5 @@ import { makeSignUpValidation } from './SignUpValidationFactory'
 import { makeDbAddUser } from '../../usecases/users/DbAddUserfactory'
 
 export const makeSignUpController = (): Controller => {
-  const controller = new SignUpController(makeDbAddUser(), makeSignUpValidation())
-  return controller
+  return new SignUpController(makeDbAddUser(), makeSignUpValidation())
 }
