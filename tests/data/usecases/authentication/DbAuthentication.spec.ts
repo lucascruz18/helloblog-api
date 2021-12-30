@@ -1,14 +1,16 @@
-import { DbAuthentication } from './DbAuthentication'
+import { DbAuthentication } from '@/data/usecases/authentication/DbAuthentication'
 import {
   UserModel,
   AuthenticationModel,
   LoadUserByEmailRepository,
   HashComparer,
   Encrypter,
-} from './DbAuthenticationProtocols'
+} from '@/data/usecases/authentication/DbAuthenticationProtocols'
+
+const userId = 1
 
 const makeFakeAccount = (): UserModel => ({
-  id: 1,
+  id: userId,
   name: 'any_email',
   email: 'any_email@mail.com',
   password: 'hashed_password'
@@ -117,7 +119,7 @@ describe('DbAuthentication UseCase', () => {
     const { sut, encrypterStub } = makeSut()
     const ecryptSpy = jest.spyOn(encrypterStub, 'encrypt')
     await sut.auth(makeFakeAuthentication())
-    expect(ecryptSpy).toHaveBeenCalledWith('any_id')
+    expect(ecryptSpy).toHaveBeenCalledWith(userId)
   })
 
   test('Should throw if Encrypter throws', async () => {
